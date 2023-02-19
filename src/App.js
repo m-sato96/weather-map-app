@@ -13,11 +13,11 @@ import {
   WiRainMix,
   WiHail,
   WiStormShowers,
-  WiShowers,
+  WiSnow,
   WiDust,
 } from "react-icons/wi";
 
-function App() {
+const App = () => {
   const API_ENDPOINT = "https://api.openweathermap.org/data/2.5/weather";
   const apiKey = process.env.REACT_APP_API_KEY;
   const [weatherData, setWeatherData] = useState({});
@@ -57,8 +57,8 @@ function App() {
           "10n": <WiHail size={60} />,
           "11d": <WiStormShowers size={60} />,
           "11n": <WiStormShowers size={60} />,
-          "13d": <WiShowers size={60} />,
-          "13n": <WiShowers size={60} />,
+          "13d": <WiSnow size={60} />,
+          "13n": <WiSnow size={60} />,
           "50d": <WiDust size={60} />,
           "50n": <WiDust size={60} />,
         };
@@ -80,6 +80,7 @@ function App() {
   useEffect(() => {
     handleGetWeather("tokyo");
   }, []);
+
   return (
     <ChakraProvider>
       <Box backgroundImage={`url('/images/${weatherData.img_path}.jpg')`} backgroundSize="cover">
@@ -88,6 +89,6 @@ function App() {
       </Box>
     </ChakraProvider>
   );
-}
+};
 
 export default App;
