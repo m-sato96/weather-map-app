@@ -1,4 +1,14 @@
-import { ChakraProvider, Box } from "@chakra-ui/react";
+import {
+  ChakraProvider,
+  Box,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  Button,
+} from "@chakra-ui/react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
@@ -21,6 +31,7 @@ const App = () => {
   const API_ENDPOINT = "https://api.openweathermap.org/data/2.5/weather";
   const apiKey = process.env.REACT_APP_API_KEY;
   const [weatherData, setWeatherData] = useState({});
+  const [showModal, setShowModal] = useState(false);
 
   const handleGetWeather = (city) => {
     axios
@@ -75,6 +86,7 @@ const App = () => {
       })
       .catch((error) => {
         console.log(error);
+        setShowModal(true);
       });
   };
   useEffect(() => {
@@ -86,6 +98,16 @@ const App = () => {
       <Box backgroundImage={`url('/images/${weatherData.img_path}.jpg')`} backgroundSize="cover">
         <Header handleGetWeather={handleGetWeather} />
         <Weather weatherData={weatherData} />
+        <Modal isOpen={showModal} onClose={() => setShowModal(false)}>
+          <ModalOverlay />
+          <ModalContent>
+            <ModalHeader>エラー</ModalHeader>
+            <ModalBody>入力した都市のお天気情報を取得できませんでした。</ModalBody>
+            <ModalFooter>
+              <Button onClick={() => setShowModal(false)}>閉じる</Button>
+            </ModalFooter>
+          </ModalContent>
+        </Modal>
       </Box>
     </ChakraProvider>
   );

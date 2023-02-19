@@ -23,6 +23,13 @@ const Header = ({ handleGetWeather }) => {
               }
               setCity(inputText);
             }}
+            onKeyDown={(event) => {
+              if (event.key === "Enter") {
+                if (city === "") return;
+                if (!/^[0-9a-zA-Z]+$/.test(city)) return;
+                handleGetWeather(city);
+              }
+            }}
           />
         </InputGroup>
         <Button
@@ -35,7 +42,6 @@ const Header = ({ handleGetWeather }) => {
             if (city === "") return;
             if (!/^[0-9a-zA-Z]+$/.test(city)) return;
             handleGetWeather(city);
-            setCity("");
           }}
         >
           検索
