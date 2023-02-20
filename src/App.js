@@ -50,8 +50,17 @@ const App = () => {
           Rain: "雨",
           Snow: "雪",
           Atmosphere: "霧",
-          Clear: "晴れ",
+          Clear: "晴天",
           Clouds: "曇り",
+          Mist: "霧",
+          Smoke: "スモッグ",
+          Haze: "煙霧",
+          Dust: "ほこり",
+          Fog: "濃霧",
+          Sand: "砂嵐",
+          Ash: "火山灰",
+          Squall: "突風",
+          Tornado: "竜巻",
         };
         const icon = {
           "01d": <WiDaySunny size={60} />,
