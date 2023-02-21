@@ -10,7 +10,6 @@ import {
   Button,
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
-
 import "./App.css";
 import Header from "./components/Header";
 import Weather from "./components/Weather";
