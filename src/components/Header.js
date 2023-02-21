@@ -1,10 +1,18 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Box, Text, Flex, Input, Button, InputLeftElement, InputGroup } from "@chakra-ui/react";
 import { Icon } from "@chakra-ui/icons";
 import { ImLocation, ImSearch } from "react-icons/im";
-const Header = ({ handleGetWeather }) => {
+import { useDispatch } from "react-redux";
+import { fetchWeather } from "../store/weather";
+
+const Header = () => {
   const [city, setCity] = useState("");
   const [error, setError] = useState(false);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchWeather("tokyo"));
+  }, []);
   return (
     <Box p={5} maxWidth="550px" marginX="auto" position="relative">
       <Flex direction="row" justifyContent="space-between" alignItems="center">
@@ -27,7 +35,7 @@ const Header = ({ handleGetWeather }) => {
               if (event.key === "Enter") {
                 if (city === "") return;
                 if (!/^[0-9a-zA-Z]+$/.test(city)) return;
-                handleGetWeather(city);
+                dispatch(fetchWeather(city));
               }
             }}
           />
@@ -41,7 +49,7 @@ const Header = ({ handleGetWeather }) => {
           onClick={() => {
             if (city === "") return;
             if (!/^[0-9a-zA-Z]+$/.test(city)) return;
-            handleGetWeather(city);
+            dispatch(fetchWeather(city));
           }}
         >
           検索

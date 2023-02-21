@@ -1,8 +1,12 @@
 import React from "react";
 import { ImLocation } from "react-icons/im";
-
 import { Flex, Box, Text, Stack } from "@chakra-ui/react";
-const Weather = ({ weatherData }) => {
+import { useSelector } from "react-redux";
+
+import { Icon } from "./Icon";
+
+const Weather = () => {
+  const { weather } = useSelector((state) => state.weather);
   return (
     <Box h={`calc(100vh - ${80}px)`}>
       <Box position="relative" h="100%" p={5} width="100%" maxWidth="1050px" marginX="auto" textAlign="right">
@@ -16,26 +20,28 @@ const Weather = ({ weatherData }) => {
           borderRadius="5px"
         >
           <Stack spacing={1} marginBottom="50px">
-            <Flex justifyContent="flex-end">{weatherData.icon}</Flex>
+            <Flex justifyContent="flex-end">
+              <Icon />
+            </Flex>
             <Text as="b" fontSize="60px">
-              {weatherData.weather}
+              {weather.weather}
             </Text>
             <Flex flexDirection="row" alignItems="center" justifyContent="flex-end">
               <ImLocation size={20} style={{ marginRight: "10px" }} />
               <Text as="b" fontSize="20px">
-                {weatherData.city}
+                {weather.city}
               </Text>
             </Flex>
-            <Text as="b"> {weatherData.temp}℃</Text>
+            <Text as="b"> {weather.temp}℃</Text>
           </Stack>
           <Flex flexDirection="row" justifyContent="space-between" w="170px">
             <Box>
               <Text>最低気温</Text>
-              <Text as="b"> {weatherData.temp_min}℃</Text>
+              <Text as="b"> {weather.temp_min}℃</Text>
             </Box>
             <Box>
               <Text>最高気温</Text>
-              <Text as="b"> {weatherData.temp_max}℃</Text>
+              <Text as="b"> {weather.temp_max}℃</Text>
             </Box>
           </Flex>
         </Box>
