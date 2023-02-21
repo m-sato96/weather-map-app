@@ -5,7 +5,11 @@
 /.pnp
 .pnp.js
 .env
+# Firebase Hostingの設定ファイル
+firebase.json
 
+# Firebaseプロジェクトの設定ファイル
+.firebaserc
 # testing
 /coverage
 
