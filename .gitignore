@@ -9,6 +9,7 @@
 firebase.json
 
 # Firebaseプロジェクトの設定ファイル
+/.firebase
 .firebaserc
 # testing
 /coverage
