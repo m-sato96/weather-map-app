@@ -34,7 +34,7 @@ const App = () => {
         <Weather />
         <Modal isOpen={showModal} onClose={() => setShowModal(false)}>
           <ModalOverlay />
-          <ModalContent style={{ margin: "300px 20px 0" }}>
+          <ModalContent className="custom-modal">
             <ModalHeader>エラー</ModalHeader>
             <ModalBody>入力した都市のお天気情報を取得できませんでした。</ModalBody>
             <ModalFooter>
